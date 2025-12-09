@@ -22,6 +22,7 @@ def test_sum_of_the_parts_should_be_equal_to_value(
         sum(split_integer(value, number_of_parts)) == sum_of_the_parts
     ), f"Sum of all parts should be equal to {sum_of_the_parts}"
 
+
 @pytest.mark.parametrize(
     "value, number_of_parts, equal_part",
     [
@@ -40,7 +41,11 @@ def test_should_split_into_equal_parts_when_value_divisible_by_parts(
 ) -> None:
     assert (
         set(split_integer(value, number_of_parts)) == equal_part
-    ), f"List should consist only out of equal values, each value should be: {list(equal_part)[0]}"
+    ), (
+        "List should consist only out of equal values, ",
+        f"each value should be: {list(equal_part)[0]}"
+    )
+
 
 @pytest.mark.parametrize(
     "value, number_of_parts, expected_value",
@@ -60,7 +65,8 @@ def test_should_return_part_equals_to_value_when_split_into_one_part(
 ) -> None:
     assert (
         split_integer(value, number_of_parts) == expected_value
-    ), f"Returned part should be always equal to value when divided by 1"
+    ), "Returned part should be always equal to value when divided by 1"
+
 
 @pytest.mark.parametrize(
     "value, number_of_parts, expected_parts",
@@ -80,7 +86,8 @@ def test_parts_should_be_sorted_when_they_are_not_equal(
 ) -> None:
     assert (
         split_integer(value, number_of_parts) == expected_parts
-    ), f"Parts should be sorted!"
+    ), "Parts should be sorted!"
+
 
 @pytest.mark.parametrize(
     "value, number_of_parts, parts_with_zeros",
@@ -100,4 +107,7 @@ def test_should_add_zeros_when_value_is_less_than_number_of_parts(
 ) -> None:
     assert (
         split_integer(value, number_of_parts) == parts_with_zeros
-    ), f"When 'number_of_parts' is bigger than 'value', parts list should contain zeros"
+    ), (
+        "When 'number_of_parts' is bigger than 'value', ",
+        "parts list should contain zeros"
+    )
