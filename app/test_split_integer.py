@@ -18,10 +18,15 @@ def test_sum_of_the_parts_should_be_equal_to_value(
     number_of_parts: int,
     sum_of_parts: list[int]
 ) -> None:
-    # assigned func value to a variable do to shorten assert statement length
-    parts = split_integer(value, number_of_parts)
     assert (
-        sum(parts) == sum(sum_of_parts) and parts[-1] - parts[0] <= 1
+        (
+            sum(split_integer(value, number_of_parts)) == sum(sum_of_parts)
+            and (
+                split_integer(value, number_of_parts)[-1]
+                - split_integer(value, number_of_parts)[0]
+                <= 1
+            )
+        )
     ), f"Sum of all parts should be equal to {value}"
 
 
