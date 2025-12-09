@@ -3,10 +3,10 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "value, number_of_parts, sum_of_the_parts",
+    "value, number_of_parts",
     [
-        (8, 2, 8),
-        (11, 3, 11)
+        (8, 2),
+        (11, 3)
     ],
     ids=[
         "value: 8, number_of_parts: 2",
@@ -15,12 +15,13 @@ import pytest
 )
 def test_sum_of_the_parts_should_be_equal_to_value(
     value: int,
-    number_of_parts: int,
-    sum_of_the_parts: int
+    number_of_parts: int
 ) -> None:
+    # assigned func value to a variable do to shorten assert statement length
+    parts = split_integer(value, number_of_parts)
     assert (
-        sum(split_integer(value, number_of_parts)) == sum_of_the_parts
-    ), f"Sum of all parts should be equal to {sum_of_the_parts}"
+        sum(parts) == value and parts[-1] - parts[0] <= 1
+    ), f"Sum of all parts should be equal to {value}"
 
 
 @pytest.mark.parametrize(
