@@ -62,9 +62,25 @@ def test_should_return_part_equals_to_value_when_split_into_one_part(
         split_integer(value, number_of_parts) == expected_value
     ), f"Returned part should be always equal to value when divided by 1"
 
-
-def test_parts_should_be_sorted_when_they_are_not_equal() -> None:
-    pass
+@pytest.mark.parametrize(
+    "value, number_of_parts, expected_parts",
+    [
+        (9, 4, [2, 2, 2, 3]),
+        (12, 5, [2, 2, 2, 3, 3])
+    ],
+    ids=[
+        "value: 9, number_of_parts: 4",
+        "value: 12, number_of_parts: 5"
+    ]
+)
+def test_parts_should_be_sorted_when_they_are_not_equal(
+    value: int,
+    number_of_parts: int,
+    expected_parts: list[int]
+) -> None:
+    assert (
+        split_integer(value, number_of_parts) == expected_parts
+    ), f"Parts should be sorted!"
 
 
 def test_should_add_zeros_when_value_is_less_than_number_of_parts() -> None:
