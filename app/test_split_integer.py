@@ -26,8 +26,8 @@ def test_sum_of_the_parts_should_be_equal_to_value(
 @pytest.mark.parametrize(
     "value, number_of_parts, equal_part",
     [
-        (8, 2, {4}),
-        (10, 5, {2})
+        (8, 2, [4, 4]),
+        (10, 5, [2, 2, 2, 2, 2])
     ],
     ids=[
         "value: 8, number_of_parts: 2",
@@ -37,13 +37,13 @@ def test_sum_of_the_parts_should_be_equal_to_value(
 def test_should_split_into_equal_parts_when_value_divisible_by_parts(
     value: int,
     number_of_parts: int,
-    equal_part: set
+    equal_part: list[int]
 ) -> None:
     assert (
-        set(split_integer(value, number_of_parts)) == equal_part
+        split_integer(value, number_of_parts) == equal_part
     ), (
         "List should consist only out of equal values, ",
-        f"each value should be: {list(equal_part)[0]}"
+        f"each value should be: {equal_part[0]}"
     )
 
 
