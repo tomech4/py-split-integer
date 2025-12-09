@@ -22,9 +22,25 @@ def test_sum_of_the_parts_should_be_equal_to_value(
         sum(split_integer(value, number_of_parts)) == sum_of_the_parts
     ), f"Sum of all parts should be equal to {sum_of_the_parts}"
 
-
-def test_should_split_into_equal_parts_when_value_divisible_by_parts() -> None:
-    pass
+@pytest.mark.parametrize(
+    "value, number_of_parts, equal_part",
+    [
+        (8, 2, {4}),
+        (10, 5, {2})
+    ],
+    ids=[
+        "value: 8, number_of_parts: 2",
+        "value: 10, number_of_parts: 5"
+    ]
+)
+def test_should_split_into_equal_parts_when_value_divisible_by_parts(
+    value: int,
+    number_of_parts: int,
+    equal_part: set
+) -> None:
+    assert (
+        set(split_integer(value, number_of_parts)) == equal_part
+    ), f"List should consist only out of equal values, each value should be: {list(equal_part)[0]}"
 
 
 def test_should_return_part_equals_to_value_when_split_into_one_part() -> None:
