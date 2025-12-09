@@ -34,11 +34,11 @@ def test_sum_of_the_parts_should_be_equal_to_value(
     "value, number_of_parts, equal_part",
     [
         (6, 2, [3, 3]),
-        (17, 4, [4, 4, 4, 5])
+        (16, 4, [4, 4, 4, 4])
     ],
     ids=[
         "value: 6, number_of_parts: 2",
-        "value: 17, number_of_parts: 4"
+        "value: 16, number_of_parts: 4"
     ]
 )
 def test_should_split_into_equal_parts_when_value_divisible_by_parts(
