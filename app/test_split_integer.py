@@ -42,9 +42,25 @@ def test_should_split_into_equal_parts_when_value_divisible_by_parts(
         set(split_integer(value, number_of_parts)) == equal_part
     ), f"List should consist only out of equal values, each value should be: {list(equal_part)[0]}"
 
-
-def test_should_return_part_equals_to_value_when_split_into_one_part() -> None:
-    pass
+@pytest.mark.parametrize(
+    "value, number_of_parts, expected_value",
+    [
+        (5, 1, [5]),
+        (22, 1, [22])
+    ],
+    ids=[
+        "value: 5, number_of_parts: 1",
+        "value: 22, number_of_parts: 1"
+    ]
+)
+def test_should_return_part_equals_to_value_when_split_into_one_part(
+    value: int,
+    number_of_parts: int,
+    expected_value: list[int]
+) -> None:
+    assert (
+        split_integer(value, number_of_parts) == expected_value
+    ), f"Returned part should be always equal to value when divided by 1"
 
 
 def test_parts_should_be_sorted_when_they_are_not_equal() -> None:
